@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Covid19_Dashboard</string>
+    <string name="allow_permission">Allow</string>
+    <string name="go_to_settings">Go to Settings</string>
+    <string name="allow_permission_to_use_some_feature">Allow permission to use some features</string>
+    <string name="going_out_notiification_message">Going out !! Don\'t forget to wear your mask and follow all the norms of social distancing.</string>
+    <string name="back_to_home_notification_message">Back to home !! Don\'t forget to sanitize your hands.</string>
 </resources>
