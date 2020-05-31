@@ -1,110 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:baselineAligned="false"
-    android:padding="@dimen/mini_size">
+<layout>
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <data>
+
+        <variable
+            name="model"
+            type="com.demo.covid19_dashboard.models.Statewise" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:baselineAligned="false"
+        android:padding="@dimen/mini_size">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/tiny_size"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimarySmallStyle"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/total_cases" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny_size"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimarySmallStyle"
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/total_cases" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/normal_size"
+                    android:text="@string/recovered_cases" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="@dimen/normal_size"
-                android:text="@string/recovered_cases" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/mini_size"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    tools:text="211654231"
+                    android:text="@{model.confirmed}"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/small_size"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:text="@{model.recovered}"
+                    tools:text="2116545" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/mini_size"
-            android:orientation="vertical">
+            android:layout_marginStart="@dimen/small_size"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimaryStyle"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_gravity="start"
-                android:textStyle="bold"
-                android:singleLine="true"
-                tools:text="211654231" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny_size"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimaryStyle"
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/active_cases" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/normal_size"
+                    android:text="@string/total_deaths" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="@dimen/small_size"
-                android:singleLine="true"
-                android:textStyle="bold"
-                tools:text="2116545" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/mini_size"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:textColor="@color/colorRed"
+                    android:textStyle="bold"
+                    android:text="@{model.active}"
+                    tools:text="2116545" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/small_size"
+                    android:textColor="@color/colorRed"
+                    android:textStyle="bold"
+                    android:text="@{model.deaths}"
+                    tools:text="2116545" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_marginStart="@dimen/small_size"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/tiny_size"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimarySmallStyle"
-                android:layout_width="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/active_cases" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimarySmallStyle"
-                android:layout_width="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="@dimen/normal_size"
-                android:text="@string/total_deaths" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/mini_size"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimaryStyle"
-                android:layout_width="wrap_content"
-                android:layout_gravity="start"
-                android:textColor="@color/colorRed"
-                android:textStyle="bold"
-                tools:text="2116545" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextViewPrimaryStyle"
-                android:layout_width="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="@dimen/small_size"
-                android:textColor="@color/colorRed"
-                android:textStyle="bold"
-                tools:text="2116545" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</layout>

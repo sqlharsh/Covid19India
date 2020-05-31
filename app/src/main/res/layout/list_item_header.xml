@@ -1,11 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+        <variable
+            name="model"
+            type="com.demo.covid19_dashboard.models.Statewise" />
+    </data>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/normal_size"
+        app:cardElevation="@dimen/tiny_size">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/normal_size">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    tools:text="211654231"
+                    android:text="@{model.confirmed}"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:text="@string/confirmed" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryText"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    tools:text="211654231"
+                    android:text="@{model.active}"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:text="@string/active" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryText"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    tools:text="211654231"
+                    android:text="@{model.deaths}"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:text="@string/deaths" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryText"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimaryStyle"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    tools:text="211654231"
+                    android:text="@{model.recovered}"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextViewPrimarySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/tiny_size"
+                    android:text="@string/recovered" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

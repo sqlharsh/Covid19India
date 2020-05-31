@@ -12,7 +12,7 @@ import com.demo.covid19_dashboard.models.Statewise
 import com.demo.covid19_dashboard.utils.Constants.Companion.HEADER
 import com.demo.covid19_dashboard.utils.Constants.Companion.ITEM
 
-class SateDataAdapter(private var mContext: Context) :
+class StateDataAdapter(private var mContext: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var layoutInflater: LayoutInflater
@@ -58,7 +58,7 @@ class SateDataAdapter(private var mContext: Context) :
             HEADER -> {
                 val loadingViewHolder = holder as HeaderViewHolder
                 val member = listModel?.get(position)
-//                member?.let { loadingViewHolder.bind(it) }
+                member?.let { loadingViewHolder.bind(it) }
             }
         }
     }
@@ -90,6 +90,7 @@ class SateDataAdapter(private var mContext: Context) :
         }
         fun bind(model:Statewise){
             binding.model = model
+            binding.layoutCases.model = model
             binding.executePendingBindings()
         }
     }
@@ -101,10 +102,10 @@ class SateDataAdapter(private var mContext: Context) :
         init {
 
         }
-        /*fun bind(model:Statewise){
+        fun bind(model:Statewise){
             binding.model = model
             binding.executePendingBindings()
-        }*/
+        }
     }
 
 }
