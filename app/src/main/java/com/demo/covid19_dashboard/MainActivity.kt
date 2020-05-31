@@ -13,6 +13,7 @@ import com.demo.covid19_dashboard.databinding.ActivityMainBinding
 import com.demo.covid19_dashboard.receiver.GeofenceEventReceiver
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
