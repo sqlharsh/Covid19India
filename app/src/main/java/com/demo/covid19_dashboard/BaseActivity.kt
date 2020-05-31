@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.demo.covid19_dashboard.utils.Constants.Companion.REQUEST_CHECK_LOCATION_SETTINGS
 import com.google.android.gms.common.api.ApiException
@@ -109,9 +111,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun showProgressDialog() {
-        if (progressDialog == null || !progressDialog?.isShowing!!) {
             progressDialog = Dialog(this);
-
 
             progressDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             try {
@@ -142,7 +142,6 @@ open class BaseActivity : AppCompatActivity() {
             progressDialog?.setCancelable(false)
 
             progressDialog?.show()
-        }
     }
 
     fun hideProgressDialog() {
@@ -155,5 +154,27 @@ open class BaseActivity : AppCompatActivity() {
         } finally {
             progressDialog?.dismiss()
         }
+    }
+
+    fun isNetworkAvailable(): Boolean {
+        val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return if (netInfo != null && netInfo.isConnectedOrConnecting
+            && cm.activeNetworkInfo.isAvailable
+            && cm.activeNetworkInfo.isConnected
+        ) {
+            true
+        } else {
+            showToast(getString(R.string.no_internet_message))
+            false
+        }
+    }
+
+
+    fun showToast(msg: String) {
+        val toast =
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, 0, 120)
+        toast.show()
     }
 }

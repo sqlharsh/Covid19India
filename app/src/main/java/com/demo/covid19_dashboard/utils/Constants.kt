@@ -12,5 +12,7 @@ class Constants {
         const val LOCATION_REQUESTCODE = 1010
         const val REQUEST_CODE_SETTINGS_LOCATION = 1011
         const val PUSH_NOTIFICATION_CHANNEL_ID = "COVID_REMINDER"
+
+        const val PREF_ADDRESS_LATLNG = "LATLNG"
     }
 }

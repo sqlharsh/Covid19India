@@ -3,59 +3,53 @@ package com.demo.covid19_dashboard
 import android.app.PendingIntent
 import android.content.Intent
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.demo.covid19_dashboard.databinding.ActivityMainBinding
 import com.demo.covid19_dashboard.receiver.GeofenceEventReceiver
+import com.demo.covid19_dashboard.utils.Constants
+import com.demo.covid19_dashboard.utils.getSavedLatlng
+import com.demo.covid19_dashboard.viewmodels.MainViewModel
+import com.demo.covid19_dashboard.viewmodels.PermissionViewModel
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
-import java.util.*
+import com.iMpactHealth.iwire.solutions.utils.SharedPreferenceHelper
 
 class MainActivity : BaseActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentLatLng: LatLng? = null
     private lateinit var binding:ActivityMainBinding
     private var mGeofencingClient: GeofencingClient? = null
+    private lateinit var viewmodel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         initView()
+        setUpViewModel()
     }
 
     private fun initView(){
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        mGeofencingClient = LocationServices.getGeofencingClient(this)
-        getLastKnownLocation()
+
         showProgressDialog()
-        Handler().postDelayed(Runnable {
-            hideProgressDialog()
-        },10000)
+        mGeofencingClient = LocationServices.getGeofencingClient(this)
+        currentLatLng = SharedPreferenceHelper.getInstance(this).getStringValue(Constants.PREF_ADDRESS_LATLNG,"").getSavedLatlng()
+
+        addGeofence()
     }
 
-    // get last known location
-    private fun getLastKnownLocation() {
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                currentLatLng = location?.latitude?.let { LatLng(it, location.longitude) }
-                Log.e(TAG, "location = " + location)
-                if (currentLatLng != null) {
-                    addGeofence()
-                }else {
-                    // if last known location gives null then get location using locationupdates
-                    fusedLocationClient.requestLocationUpdates(
-                        createLocationRequest(),
-                        mLocationCallback,
-                        Looper.myLooper()
-                    )
-                }
-            }
+    private fun setUpViewModel(){
+        viewmodel = ViewModelProvider(this).get<MainViewModel>(MainViewModel::class.java)
+        Handler().postDelayed(Runnable {
+            getCovidData()
+        },1000)
+
     }
     private fun addGeofence(){
         val geofence = createGeofence()
@@ -93,33 +87,22 @@ class MainActivity : BaseActivity() {
             .addGeofence(geofence)
             .build()
 
-    /**
-     * Sets the location request parameters.
-     */
-    private fun createLocationRequest():LocationRequest {
-       val mLocationRequest = LocationRequest()
-        mLocationRequest.setInterval(1000)
-        mLocationRequest.setFastestInterval(500)
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-        return mLocationRequest
-    }
+    //
+    private fun getCovidData() {
+        if (isNetworkAvailable()) {
+            viewmodel.getStateWiseData()
+            viewmodel.statewiseLivedata.observe(this, Observer {
+                hideProgressDialog()
+                if (it!=null){
 
-    val mLocationCallback = object : LocationCallback() {
-        override fun onLocationResult(locationResult: LocationResult?) {
-            super.onLocationResult(locationResult)
-            if (locationResult?.lastLocation!=null){
-                currentLatLng = locationResult.lastLocation.latitude.let {
-                    LatLng(it, locationResult.lastLocation.longitude) }
+                }
+            })
 
-                addGeofence()
-                fusedLocationClient.removeLocationUpdates(this)
-            }
         }
     }
 
     override fun onStop() {
         super.onStop()
-        fusedLocationClient.removeLocationUpdates(mLocationCallback)
     }
 
 }

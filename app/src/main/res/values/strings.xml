@@ -5,4 +5,9 @@
     <string name="allow_permission_to_use_some_feature">Allow permission to use some features</string>
     <string name="going_out_notiification_message">Going out !! Don\'t forget to wear your mask and follow all the norms of social distancing.</string>
     <string name="back_to_home_notification_message">Back to home !! Don\'t forget to sanitize your hands.</string>
+    <string name="is_this_your_home">Is this Your Home Location?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="let_covid19_access_your_location_to_send_you_safety_notifications">Let Covid19 access your location to send you safety notifications</string>
+    <string name="no_internet_message">No Internet Connection.</string>
 </resources>

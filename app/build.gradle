@@ -13,6 +13,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", " BASE_URL", '"https://api.covid19india.org/"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,4 +52,9 @@ dependencies {
 
     // lottie for animations
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
+
+    // Retrofit lib
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.retrofitInterceptor"
 }
