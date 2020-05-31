@@ -1,0 +1,53 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <integer name="max_name_length">30</integer>
+
+    <!-- Common padding or margin size -->
+    <dimen name="tiny_size">@dimen/_2sdp</dimen>
+    <dimen name="mini_size">@dimen/_4sdp</dimen>
+    <dimen name="small_size">@dimen/_6sdp</dimen>
+    <dimen name="normal_size">@dimen/_8sdp</dimen>
+    <dimen name="medium_size">@dimen/_12sdp</dimen>
+    <dimen name="mediator_size">@dimen/_14sdp</dimen>
+    <dimen name="regular_size">@dimen/_16sdp</dimen>
+    <dimen name="large_size">@dimen/_18sdp</dimen>
+    <dimen name="huge_size">@dimen/_22sdp</dimen>
+
+
+    <!-- Common Text Size -->
+    <dimen name="text_size_tiny">@dimen/_6sdp</dimen>
+    <dimen name="text_size_mini">@dimen/_8sdp</dimen>
+    <dimen name="text_size_small">@dimen/_10sdp</dimen>
+    <dimen name="text_size_normal">@dimen/_12sdp</dimen>
+    <dimen name="text_size_medium">@dimen/_14sdp</dimen>
+    <dimen name="text_size_large">@dimen/_16sdp</dimen>
+    <dimen name="text_size_huge">@dimen/_18sdp</dimen>
+    <dimen name="view_round">@dimen/_15sdp</dimen>
+    <dimen name="view_small_round">@dimen/_10sdp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--size-->
+    <dimen name="text_calendar_padding">16dp</dimen>
+    <dimen name="text_calendar_date">16sp</dimen>
+    <dimen name="text_month_title">16sp</dimen>
+    <dimen name="text_week_day_header">12sp</dimen>
+
+    <!--width-->
+    <dimen name="width_circle_stroke">1dp</dimen>
+
+    <!--miscellaneous-->
+    <dimen name="dimen_date_text_view">48dp</dimen>
+    <dimen name="radius_event_dot">2dp</dimen>
+    <dimen name="padding_top_month_title">8dp</dimen>
+
+    <dimen name="height_month_title">40dp</dimen>
+    <dimen name="height_week_day_header">32dp</dimen>
+
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="message_bubble_corners_radius">15dp</dimen>
+</resources>

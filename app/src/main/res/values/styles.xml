@@ -12,4 +12,26 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <style name="TextViewPrimaryStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="TextViewPrimaryMediumStyle" parent="TextViewPrimaryStyle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="TextViewPrimarySmallStyle" parent="TextViewPrimaryStyle">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="TextViewPrimaryLargeStyle" parent="TextViewPrimaryStyle">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextViewPrimaryHugeStyle" parent="TextViewPrimaryStyle">
+        <item name="android:textSize">@dimen/text_size_huge</item>
+    </style>
 </resources>

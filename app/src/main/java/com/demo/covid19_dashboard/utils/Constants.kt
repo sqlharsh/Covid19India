@@ -14,5 +14,8 @@ class Constants {
         const val PUSH_NOTIFICATION_CHANNEL_ID = "COVID_REMINDER"
 
         const val PREF_ADDRESS_LATLNG = "LATLNG"
+
+        const val ITEM = 0
+        const val HEADER = 1
     }
 }

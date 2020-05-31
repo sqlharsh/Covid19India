@@ -1,6 +1,7 @@
 package com.demo.covid19_dashboard.models
 
 
+import com.demo.covid19_dashboard.utils.Constants
 import com.google.gson.annotations.SerializedName
 
 data class Statewise(
@@ -26,4 +27,6 @@ data class Statewise(
     val statecode: String,
     @SerializedName("statenotes")
     val statenotes: String
-)
+){
+    var type = Constants.ITEM
+}

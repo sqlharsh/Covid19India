@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:padding="@dimen/mini_size">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tiny_size"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimarySmallStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/total_cases" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimarySmallStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/normal_size"
+                android:text="@string/recovered_cases" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini_size"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:textStyle="bold"
+                android:singleLine="true"
+                tools:text="211654231" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="@dimen/small_size"
+                android:singleLine="true"
+                android:textStyle="bold"
+                tools:text="2116545" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginStart="@dimen/small_size"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tiny_size"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimarySmallStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/active_cases" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimarySmallStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/normal_size"
+                android:text="@string/total_deaths" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini_size"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:textColor="@color/colorRed"
+                android:textStyle="bold"
+                tools:text="2116545" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextViewPrimaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="@dimen/small_size"
+                android:textColor="@color/colorRed"
+                android:textStyle="bold"
+                tools:text="2116545" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

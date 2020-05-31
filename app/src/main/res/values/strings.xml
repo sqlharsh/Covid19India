@@ -10,4 +10,9 @@
     <string name="yes">Yes</string>
     <string name="let_covid19_access_your_location_to_send_you_safety_notifications">Let Covid19 access your location to send you safety notifications</string>
     <string name="no_internet_message">No Internet Connection.</string>
+    <string name="rank">Rank</string>
+    <string name="total_cases">Total Cases:</string>
+    <string name="recovered_cases">Recovered Cases:</string>
+    <string name="active_cases">Active Cases:</string>
+    <string name="total_deaths">Total Deaths:</string>
 </resources>
