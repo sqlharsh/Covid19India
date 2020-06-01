@@ -1,7 +1,5 @@
 package com.demo.covid19_dashboard.utils
 
-import android.Manifest
-
 class Constants {
     companion object {
 
@@ -14,6 +12,7 @@ class Constants {
         const val PUSH_NOTIFICATION_CHANNEL_ID = "COVID_REMINDER"
 
         const val PREF_ADDRESS_LATLNG = "LATLNG"
+        const val PREF_IS_GEOFENCE_ADDED = "GEOFENCE_ADDED"
 
         const val ITEM = 0
         const val HEADER = 1

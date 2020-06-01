@@ -46,7 +46,8 @@ class MainActivity : BaseActivity() {
         binding.rcvStatedata.layoutManager = LinearLayoutManager(this)
         adapter = StateDataAdapter(this)
         binding.rcvStatedata.adapter = adapter
-        addGeofence()
+        if (!SharedPreferenceHelper.getInstance(this).getBoolanValue(Constants.PREF_IS_GEOFENCE_ADDED,false))
+            addGeofence()
     }
 
     private fun setUpViewModel(){
@@ -67,6 +68,7 @@ class MainActivity : BaseActivity() {
         mGeofencingClient?.addGeofences(geofenceRequest,pendingIntet)
             ?.addOnCompleteListener {
                 Log.e(TAG,"geofence Added !!")
+                SharedPreferenceHelper.getInstance(this).setValue(Constants.PREF_IS_GEOFENCE_ADDED,true)
             }
             ?.addOnFailureListener{
                 Log.e(TAG,"something went wrong !")

@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.demo.covid19_dashboard.utils.Constants.Companion.PREF_ADDRESS_LATLNG
 import com.google.android.gms.maps.model.LatLng
 import com.iMpactHealth.iwire.solutions.utils.SharedPreferenceHelper
@@ -39,5 +38,7 @@ fun LatLng?.saveLatlng(context:Context) {
 
 fun String?.getSavedLatlng():LatLng? {
     val latlngArray = this?.split(",")?.toTypedArray()
-    return latlngArray?.get(0)?.toDouble()?.let { LatLng(it,latlngArray.get(1).toDouble()) }
+    if (!latlngArray?.get(0).isNullOrBlank() && latlngArray?.size!! > 1 && !latlngArray.get(1).isBlank()   )
+        return latlngArray.get(0).toDouble().let { LatLng(it,latlngArray.get(1).toDouble()) }
+    else return null
 }
