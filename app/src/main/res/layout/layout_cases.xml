@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:padding="@dimen/mini_size">
+        android:paddingTop="@dimen/mini_size"
+        android:paddingBottom="@dimen/mini_size"
+        >
 
         <LinearLayout
             android:layout_width="0dp"
@@ -54,6 +56,7 @@
                     android:singleLine="true"
                     android:textStyle="bold"
                     tools:text="211654231"
+                    android:layout_marginTop="@dimen/_1sdp"
                     android:text="@{model.confirmed}"
                     />
 
@@ -61,7 +64,7 @@
                     style="@style/TextViewPrimaryStyle"
                     android:layout_width="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginTop="@dimen/small_size"
+                    android:layout_marginTop="7dp"
                     android:singleLine="true"
                     android:textStyle="bold"
                     android:text="@{model.recovered}"
@@ -108,6 +111,7 @@
                     android:layout_gravity="start"
                     android:textColor="@color/colorRed"
                     android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_1sdp"
                     android:text="@{model.active}"
                     tools:text="2116545" />
 
@@ -115,7 +119,7 @@
                     style="@style/TextViewPrimaryStyle"
                     android:layout_width="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginTop="@dimen/small_size"
+                    android:layout_marginTop="7dp"
                     android:textColor="@color/colorRed"
                     android:textStyle="bold"
                     android:text="@{model.deaths}"

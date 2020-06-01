@@ -34,7 +34,7 @@ class StateDataAdapter(private var mContext: Context) :
             }
             HEADER -> {
                 val binding =
-                    DataBindingUtil.inflate<ListItemHeaderBinding>(layoutInflater,R.layout.list_item_data, parent, false)
+                    DataBindingUtil.inflate<ListItemHeaderBinding>(layoutInflater,R.layout.list_item_header, parent, false)
 
                 viewHolder = HeaderViewHolder(binding)
             }

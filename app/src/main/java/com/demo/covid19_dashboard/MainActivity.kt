@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.covid19_dashboard.adapter.StateDataAdapter
 import com.demo.covid19_dashboard.databinding.ActivityMainBinding
 import com.demo.covid19_dashboard.receiver.GeofenceEventReceiver
@@ -42,7 +43,9 @@ class MainActivity : BaseActivity() {
         showProgressDialog()
         mGeofencingClient = LocationServices.getGeofencingClient(this)
         currentLatLng = SharedPreferenceHelper.getInstance(this).getStringValue(Constants.PREF_ADDRESS_LATLNG,"").getSavedLatlng()
+        binding.rcvStatedata.layoutManager = LinearLayoutManager(this)
         adapter = StateDataAdapter(this)
+        binding.rcvStatedata.adapter = adapter
         addGeofence()
     }
 
@@ -94,10 +97,12 @@ class MainActivity : BaseActivity() {
         if (isNetworkAvailable()) {
             viewmodel.getStateWiseData()
             viewmodel.statewiseLivedata.observe(this, Observer {
-                hideProgressDialog()
                 if (it!=null){
+                    val list = it.statewise
+                    list.get(0).type = Constants.HEADER
                     adapter.addAllData(it.statewise)
                 }
+                hideProgressDialog()
             })
 
         }

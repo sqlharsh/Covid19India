@@ -12,6 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/normal_size"
+        android:layout_marginTop="@dimen/small_size"
+        android:layout_marginStart="@dimen/small_size"
+        android:layout_marginEnd="@dimen/small_size"
+        android:layout_marginBottom="@dimen/mini_size"
         app:cardElevation="@dimen/tiny_size">
 
         <LinearLayout
