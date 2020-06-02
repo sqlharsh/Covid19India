@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import androidx.annotation.IntegerRes
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.demo.covid19_dashboard.adapter.BannerAdapter
 import com.demo.covid19_dashboard.adapter.StateDataAdapter
 import com.demo.covid19_dashboard.databinding.ActivityMainBinding
 import com.demo.covid19_dashboard.receiver.GeofenceEventReceiver
@@ -21,6 +23,7 @@ import com.google.android.gms.location.GeofencingRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.iMpactHealth.iwire.solutions.utils.SharedPreferenceHelper
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
@@ -48,6 +51,11 @@ class MainActivity : BaseActivity() {
         binding.rcvStatedata.adapter = adapter
         if (!SharedPreferenceHelper.getInstance(this).getBoolanValue(Constants.PREF_IS_GEOFENCE_ADDED,false))
             addGeofence()
+
+        val adapter = BannerAdapter(this)
+        val listImages = arrayListOf<Int>(R.drawable.ic_social_distancing,R.drawable.ic_hand_sanatize,R.drawable.ic_disinfect_virus)
+        adapter.setAdvertisements(listImages)
+        binding.sliderViewPager.adapter = adapter
     }
 
     private fun setUpViewModel(){
