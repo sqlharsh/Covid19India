@@ -58,10 +58,9 @@ class GeofenceEventReceiver : BroadcastReceiver() {
             NotificationCompat.Builder(context, Constants.PUSH_NOTIFICATION_CHANNEL_ID)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
-            notificationBuilder.setColor(ContextCompat.getColor(context, android.R.color.white))
+            notificationBuilder.setSmallIcon(R.drawable.ic_notification)
         } else {
-            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher)
+            notificationBuilder.setSmallIcon(R.drawable.ic_notification)
         }
 
         notificationBuilder.setLargeIcon(

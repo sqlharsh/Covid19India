@@ -58,9 +58,6 @@ class LocationPermissionActivity : BaseActivity(), View.OnClickListener {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         binding.clicklistener = this
-        val manager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-            enableGps()
 
         if (isLocationPermissionGranted()){
             val latlng = SharedPreferenceHelper.getInstance(this).getStringValue(Constants.PREF_ADDRESS_LATLNG,"").getSavedLatlng()

@@ -82,7 +82,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         Handler().postDelayed(Runnable {
             getCovidData()
         },1000)
-
     }
     private fun addGeofence(){
         val geofence = createGeofence()
@@ -133,7 +132,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
                 }
                 hideProgressDialog()
             })
-
         }
     }
 
