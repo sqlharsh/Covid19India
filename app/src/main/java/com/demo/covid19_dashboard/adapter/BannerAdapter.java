@@ -26,9 +26,9 @@ public class BannerAdapter extends PagerAdapter {
     private LayoutInflater inflater;
 
 
-    public BannerAdapter(Activity activity) {
+    public BannerAdapter(Activity activity,ArrayList<Integer> mImageList) {
         mActivity = activity;
-        mImageList = new ArrayList<Integer>();
+        this.mImageList = mImageList;
     }
 
     @Override

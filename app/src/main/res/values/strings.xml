@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid19_Dashboard</string>
+    <string name="app_name">CovidIndia</string>
     <string name="allow_permission">Allow</string>
     <string name="go_to_settings">Go to Settings</string>
     <string name="allow_permission_to_use_some_feature">Allow permission to use some features</string>

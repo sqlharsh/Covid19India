@@ -5,11 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import androidx.annotation.IntegerRes
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.demo.covid19_dashboard.adapter.BannerAdapter
 import com.demo.covid19_dashboard.adapter.StateDataAdapter
 import com.demo.covid19_dashboard.databinding.ActivityMainBinding
@@ -23,9 +23,11 @@ import com.google.android.gms.location.GeofencingRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.iMpactHealth.iwire.solutions.utils.SharedPreferenceHelper
+import kotlinx.coroutines.handleCoroutineException
 import java.util.*
+import kotlin.concurrent.timer
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
     private val TAG = MainActivity::class.java.simpleName
     private var currentLatLng: LatLng? = null
@@ -33,6 +35,12 @@ class MainActivity : BaseActivity() {
     private var mGeofencingClient: GeofencingClient? = null
     private lateinit var viewmodel: MainViewModel
     private lateinit var adapter: StateDataAdapter
+    private lateinit var timer: Timer
+    private lateinit var handler:Handler
+    private var currentPage = 0;
+    private val DELAY_MS: Long = 2000 //delay in milliseconds before task is to be executed
+    private val PERIOD_MS: Long = 5000 // time in milliseconds between successive task executions.
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +60,21 @@ class MainActivity : BaseActivity() {
         if (!SharedPreferenceHelper.getInstance(this).getBoolanValue(Constants.PREF_IS_GEOFENCE_ADDED,false))
             addGeofence()
 
-        val adapter = BannerAdapter(this)
+        // setting up image slider and auto scroll functionality
         val listImages = arrayListOf<Int>(R.drawable.ic_social_distancing,R.drawable.ic_hand_sanatize,R.drawable.ic_disinfect_virus)
-        adapter.setAdvertisements(listImages)
+        val adapter = BannerAdapter(this,listImages)
         binding.sliderViewPager.adapter = adapter
+        binding.circlePagerIndicator.setViewPager(binding.sliderViewPager)
+
+        handler = Handler()
+        timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(sliderRunnable)
+            }
+        },DELAY_MS,PERIOD_MS)
+
+        binding.sliderViewPager.addOnPageChangeListener(this)
     }
 
     private fun setUpViewModel(){
@@ -118,8 +137,35 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    val sliderRunnable = object : Runnable {
+        override fun run() {
+            if (currentPage == 3) {
+                currentPage = 0;
+            }
+            binding.sliderViewPager.setCurrentItem(currentPage++,true)
+        }
+    }
+
     override fun onStop() {
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
+        handler.removeCallbacks(sliderRunnable)
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
+
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        currentPage = position
+    }
+
+    override fun onPageSelected(position: Int) {
+
     }
 
 }
