@@ -56,13 +56,14 @@
                     </FrameLayout>
                 </androidx.cardview.widget.CardView>
 
-                    <androidx.appcompat.widget.Toolbar
+                    <!--<androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar_main"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
                         app:contentInsetEnd="0dp"
                         app:contentInsetStart="0dp"
+                        android:elevation="@dimen/_6sdp"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                         <RelativeLayout
@@ -80,7 +81,7 @@
                             android:textColor="@color/colorAccent"
                             />
                         </RelativeLayout>
-                    </androidx.appcompat.widget.Toolbar>
+                    </androidx.appcompat.widget.Toolbar>-->
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

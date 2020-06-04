@@ -32,6 +32,7 @@ import com.nextec.listener.SnackbarListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class LocationPermissionActivity : BaseActivity(), View.OnClickListener {
 
@@ -121,15 +122,23 @@ class LocationPermissionActivity : BaseActivity(), View.OnClickListener {
 
     private fun startMainActivity() {
         GlobalScope.launch(Dispatchers.Main) {
-            val list = viewmodel.getAddressFromLocation(currentLatLng)
-            val address = list?.get(0)?.getAddressLine(0)
-            Log.e(TAG, "address = " + address)
+            if (isNetworkAvailable()){
+                try{
+                    val list = viewmodel.getAddressFromLocation(currentLatLng)
+                    val address = list?.get(0)?.getAddressLine(0)
+                    Log.e(TAG, "address = " + address)
+
+                    currentLatLng?.saveLatlng(this@LocationPermissionActivity) // saving latlng str to preference
+                    val dialogFragment = AddressInfoDialogFragment.newInstance(address)
+                    dialogFragment.setListener(listener)
+                    dialogFragment.show(supportFragmentManager.beginTransaction(), "")
+                }catch (exception:IOException){
+                    exception.printStackTrace()
+                }
+
+            }
             hideProgressDialog()
 
-            currentLatLng?.saveLatlng(this@LocationPermissionActivity) // saving latlng str to preference
-            val dialogFragment = AddressInfoDialogFragment.newInstance(address)
-            dialogFragment.setListener(listener)
-            dialogFragment.show(supportFragmentManager.beginTransaction(), "")
         }
     }
 

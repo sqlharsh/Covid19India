@@ -19,7 +19,9 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.demo.covid19_dashboard.utils.Constants.Companion.REQUEST_CHECK_LOCATION_SETTINGS
+import com.demo.covid19_dashboard.viewmodels.MainRepository
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.ResolvableApiException
@@ -32,6 +34,18 @@ import com.nextec.listener.SnackbarListener
 open class BaseActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
     private var progressDialog:Dialog? = null
+
+    companion object {
+        @Volatile
+        private var manager: LocationManager? = null
+
+        fun getInstance(context:Context):LocationManager {
+            manager ?: synchronized(this) {
+                manager =  context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            }
+            return manager as LocationManager
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,8 +53,7 @@ open class BaseActivity : AppCompatActivity() {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         }
 
-        val manager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+        if (!getInstance(this).isProviderEnabled(LocationManager.GPS_PROVIDER))
             enableGps()
     }
 
