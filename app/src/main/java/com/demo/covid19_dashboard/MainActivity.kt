@@ -81,7 +81,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         viewmodel = ViewModelProvider(this).get<MainViewModel>(MainViewModel::class.java)
         Handler().postDelayed(Runnable {
             getCovidData()
-        },1000)
+        },1000) // this delay is just to show progress animation
     }
     private fun addGeofence(){
         val geofence = createGeofence()
