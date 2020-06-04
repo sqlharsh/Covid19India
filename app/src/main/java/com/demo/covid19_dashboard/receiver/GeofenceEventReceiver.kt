@@ -92,7 +92,7 @@ class GeofenceEventReceiver : BroadcastReceiver() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel
-            val name = "Push Notification"
+            val name = context.getString(R.string.local_notification)
             val importance = NotificationManager.IMPORTANCE_HIGH
             val mChannel =
                 NotificationChannel(Constants.PUSH_NOTIFICATION_CHANNEL_ID, name, importance)

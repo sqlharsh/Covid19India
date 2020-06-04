@@ -19,4 +19,5 @@
     <string name="active">Active</string>
     <string name="deaths">Deaths</string>
     <string name="recovered">Recovered</string>
+    <string name="local_notification">Local Notification</string>
 </resources>
