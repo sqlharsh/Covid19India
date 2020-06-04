@@ -2,4 +2,4 @@ This project is made only for demo purposes. It shows the Covid19 stats of India
 
 
 
-![screenshot_20200604-110402](https://user-images.githubusercontent.com/18550491/83719240-47c86300-a654-11ea-997c-b498c467f807.png)
+![screenshot_20200604-110402](https://user-images.githubusercontent.com/18550491/83719240-47c86300-a654-11ea-997c-b498c467f807.png)       ![screenshot_20200604-113015](https://user-images.githubusercontent.com/18550491/83720692-35035d80-a657-11ea-8e2a-8c814a4855f9.png)
